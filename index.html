@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaceVer | Doctoral Research Project</title>
+  <meta
+    name="description"
+    content="PaceVer is a doctoral research project on multimodal emotion-cause reasoning in conversation, spanning structured extraction, bridgeable explanations, and verification-driven inference-time reasoning."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="PaceVer home">
+        <span class="brand-mark">PV</span>
+        <span class="brand-text">
+          <strong>PaceVer</strong>
+          <span>Doctoral research project</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#modules">Modules</a>
+        <a href="#results">Results</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#resources">Resources</a>
+      </nav>
+      <a class="nav-cta" href="https://github.com/panzhzh/PaceVer-web" target="_blank" rel="noreferrer">Site Repo</a>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Multimodal emotion-cause reasoning in conversation</p>
+          <h1>PaceVer</h1>
+          <p class="hero-lead">
+            PaceVer is a doctoral thesis project that unifies structured pair extraction, bridgeable
+            explanation interfaces, and verification-driven inference-time reasoning for multimodal
+            emotion-cause analysis.
+          </p>
+          <p class="hero-note">
+            This public site focuses on the dissertation narrative, figures, and current research
+            status. The full research codebase is still maintained privately while the project is
+            under active cleanup and paper-driven refinement.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/panzhzh/PaceVer-web" target="_blank" rel="noreferrer">View Site Source</a>
+            <a class="button secondary" href="#resources">Release Status</a>
+          </div>
+          <div class="hero-tags" aria-label="Project tags">
+            <span>Doctoral research</span>
+            <span>MECPE</span>
+            <span>ECF benchmark</span>
+            <span>GitHub Pages</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="metric-stack">
+            <article class="metric-card">
+              <span class="metric-value">57.92</span>
+              <span class="metric-label">Pair F1 on ECF</span>
+              <p>Best reported full-multimodal extractor result in the current thesis manuscript.</p>
+            </article>
+            <article class="metric-card">
+              <span class="metric-value">+2.47</span>
+              <span class="metric-label">Absolute Pair F1 gain</span>
+              <p>Improvement over the strongest published baseline in the full multimodal setting.</p>
+            </article>
+            <article class="metric-card">
+              <span class="metric-value">BL-1</span>
+              <span class="metric-label">Bridgeable interface target</span>
+              <p>Parse-back compatible explanation objects for auditable downstream evaluation.</p>
+            </article>
+          </div>
+          <div class="thesis-frame">
+            <p class="frame-label">Thesis framing</p>
+            <h2>Efficiency, completeness, and auditability in one project.</h2>
+            <p>
+              PaceVer treats extraction and explanation as a coupled research problem: first recover
+              reliable emotion-cause links, then expose evidence-grounded explanations that remain
+              measurable.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="overview" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Overview</p>
+          <h2>A thesis project, not a product landing page</h2>
+          <p>
+            This website presents the research narrative behind the dissertation: why the problem is
+            hard, how the project is decomposed, which parts are already implemented, and where
+            papers, code, and materials can be downloaded.
+          </p>
+        </div>
+
+        <div class="challenge-grid">
+          <article class="challenge-card">
+            <span class="challenge-index">01</span>
+            <h3>Efficiency</h3>
+            <p>
+              Structured MECPE systems must score many temporally constrained links without turning
+              inference into open-ended generation.
+            </p>
+          </article>
+          <article class="challenge-card">
+            <span class="challenge-index">02</span>
+            <h3>Completeness</h3>
+            <p>
+              One-shot thresholding and top-k selection often miss low-confidence but valid long-tail
+              causes that deserve a second look.
+            </p>
+          </article>
+          <article class="challenge-card">
+            <span class="challenge-index">03</span>
+            <h3>Auditability</h3>
+            <p>
+              Fluent rationales are not enough. Explanations should point back to explicit evidence
+              and remain parse-back compatible with pair-level evaluation.
+            </p>
+          </article>
+        </div>
+
+        <div class="project-summary">
+          <div class="summary-copy">
+            <h3>How PaceVer is organized</h3>
+            <p>
+              In the thesis, PaceVer is defined as a two-part system: Task I predicts structured
+              emotion-cause links, while Task II returns evidence-grounded explanation objects that
+              can be deterministically mapped back to pair sets.
+            </p>
+            <p>
+              The extractor module is <strong>PaceExt</strong>. In the current paper-facing
+              implementation, this appears as the <strong>ATDG + DP</strong> design and the
+              <strong>TRecAM</strong> manuscript naming. On top of it, <strong>BridgeProt</strong>
+              and <strong>ReaVer</strong> extend the project toward verifiable explanations.
+            </p>
+          </div>
+          <div class="summary-rail" aria-label="PaceVer flow">
+            <div class="rail-node">
+              <span>Input</span>
+              <strong>Multimodal dialogue</strong>
+              <p>Text, audio, video, speaker structure, temporal precedence.</p>
+            </div>
+            <div class="rail-arrow">-></div>
+            <div class="rail-node">
+              <span>Task I</span>
+              <strong>PaceExt</strong>
+              <p>Dialogue-paced pair scoring with a shared temporal horizon.</p>
+            </div>
+            <div class="rail-arrow">-></div>
+            <div class="rail-node">
+              <span>Interface</span>
+              <strong>BridgeProt</strong>
+              <p>BL-1 schema, parse-back, parsability, and protocol-aware metrics.</p>
+            </div>
+            <div class="rail-arrow">-></div>
+            <div class="rail-node">
+              <span>Task II</span>
+              <strong>ReaVer</strong>
+              <p>Budgeted decoding, verification, and adaptive expansion.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="modules" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Modules</p>
+          <h2>Three layers of the PaceVer research agenda</h2>
+          <p>
+            The repository tracks both mature contributions and active thesis-stage components. The
+            website distinguishes implemented results from ongoing integration work.
+          </p>
+        </div>
+
+        <div class="module-grid">
+          <article class="module-card accent-sage">
+            <div class="module-topline">
+              <span class="status status-live">Implemented</span>
+              <span class="module-kicker">Extractor</span>
+            </div>
+            <h3>PaceExt</h3>
+            <p>
+              The trained structured extractor that learns a dialogue-paced temporal horizon and
+              outputs a full pair-score matrix under temporal constraints.
+            </p>
+            <ul>
+              <li>ATDG generates dialogue-level decay parameters from label-free pace statistics.</li>
+              <li>Dual-Path Temporal Injection aligns kernel smoothing and speaker interaction.</li>
+              <li>A pair-preserving two-stage schedule stabilizes link ranking during multi-task training.</li>
+            </ul>
+            <div class="module-links">
+              <a href="#results">Current results</a>
+              <a href="#outputs">Research outputs</a>
+              <a href="#resources">Public release status</a>
+            </div>
+          </article>
+
+          <article class="module-card accent-clay">
+            <div class="module-topline">
+              <span class="status status-build">Protocol</span>
+              <span class="module-kicker">Evaluation bridge</span>
+            </div>
+            <h3>BridgeProt</h3>
+            <p>
+              A model-agnostic output and evaluation contract for grounded explanations. BridgeProt
+              defines what a bridgeable explanation should expose, how to parse it back to pair
+              outputs, and which protocol-aware metrics to report.
+            </p>
+            <ul>
+              <li>BL-1 minimal schema with explicit evidence pointers.</li>
+              <li>Deterministic parse-back to Pair-F1 and parsability reporting.</li>
+              <li>Strict and salvaged validity metrics for protocol-aware evaluation.</li>
+            </ul>
+            <div class="module-links">
+              <a href="#overview">Protocol role</a>
+              <a href="#outputs">Survey framing</a>
+              <a href="#resources">Availability</a>
+            </div>
+          </article>
+
+          <article class="module-card accent-sea">
+            <div class="module-topline">
+              <span class="status status-thesis">Thesis-stage</span>
+              <span class="module-kicker">Inference-time reasoning</span>
+            </div>
+            <h3>ReaVer</h3>
+            <p>
+              A verification-driven decoding layer that builds on fixed pair scores from PaceExt. It
+              allocates extra computation only when needed and never replaces the base extractor with
+              an unconstrained generative model.
+            </p>
+            <ul>
+              <li>Budgeted candidate selection over structured proposals.</li>
+              <li>Constrained generation of bounded explanation objects.</li>
+              <li>Independent verification and verifier-triggered adaptive expansion.</li>
+            </ul>
+            <div class="module-links">
+              <a href="#overview">Project framing</a>
+              <a href="#outputs">Thesis-stage outputs</a>
+              <a href="#resources">Release path</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section visual-band reveal">
+        <div class="figure-feature">
+          <div class="figure-copy">
+            <p class="eyebrow">System view</p>
+            <h2>PaceExt anchors the public experimental results</h2>
+            <p>
+              The current extractor is the most mature component in the project. It operationalizes a
+              dialogue-paced temporal prior through ATDG, aligns recency across modules with DP, and
+              preserves pair decoding through a two-stage schedule.
+            </p>
+            <p>
+              The thesis then extends this extractor with bridgeable explanation interfaces and
+              verification-driven decoding rather than discarding the structured base.
+            </p>
+          </div>
+          <figure class="figure-card large-figure">
+            <img src="assets/images/paceext-overview.svg" alt="Overview of the PaceExt architecture">
+            <figcaption>PaceExt overview reused from the current TRecAM manuscript figures.</figcaption>
+          </figure>
+        </div>
+
+        <div class="figure-grid">
+          <figure class="figure-card">
+            <img src="assets/images/evolution-landscape.svg" alt="Evolution landscape of emotion causality tasks">
+            <figcaption>Survey framing from extraction to multimodal conversational emotion causality.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="assets/images/bridgeprot-case.svg" alt="Example BridgeProt case diagram">
+            <figcaption>BridgeProt emphasizes explicit evidence pointers and parse-back compatible outputs.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="results" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Current public results from the thesis manuscript</h2>
+          <p>
+            The strongest quantitative evidence in the repository currently comes from the extractor
+            module on the ECF benchmark. The figures below summarize the thesis narrative: better pair
+            extraction, improved temporal alignment, stronger long-range behavior, and robustness under
+            degraded modalities.
+          </p>
+        </div>
+
+        <div class="results-strip">
+          <article>
+            <span class="metric-value">65.12</span>
+            <span class="metric-label">Pair recall</span>
+          </article>
+          <article>
+            <span class="metric-value">55.45</span>
+            <span class="metric-label">Best baseline Pair F1</span>
+          </article>
+          <article>
+            <span class="metric-value">56.55</span>
+            <span class="metric-label">Joint training Pair F1</span>
+          </article>
+          <article>
+            <span class="metric-value">3 seeds</span>
+            <span class="metric-label">Reported mean plus std</span>
+          </article>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <h3>ECF test-set comparison</h3>
+            <p>Selected pair extraction results from the full multimodal setting reported in the thesis.</p>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Modalities</th>
+                  <th>Pair Precision</th>
+                  <th>Pair Recall</th>
+                  <th>Pair F1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MECPE-2steps</td>
+                  <td>Audio + Video</td>
+                  <td>57.47</td>
+                  <td>49.81</td>
+                  <td>53.20</td>
+                </tr>
+                <tr>
+                  <td>HiLo</td>
+                  <td>Audio + Video</td>
+                  <td>51.78</td>
+                  <td>59.69</td>
+                  <td>55.45</td>
+                </tr>
+                <tr>
+                  <td>ATDG + DP (PaceExt)</td>
+                  <td>Text-only</td>
+                  <td>53.12</td>
+                  <td>61.22</td>
+                  <td>56.88</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td>ATDG + DP (PaceExt)</td>
+                  <td>Audio + Video</td>
+                  <td>52.16</td>
+                  <td>65.12</td>
+                  <td>57.92</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-footnote">
+            Naming note: the extractor is referred to as ATDG + DP / TRecAM in the current paper
+            manuscript and as PaceExt in the thesis-level project structure.
+          </p>
+        </div>
+
+        <div class="figure-grid results-figures">
+          <figure class="figure-card">
+            <img src="assets/images/temporal-alignment.svg" alt="Temporal alignment delta figure">
+            <figcaption>Shared temporal priors reduce cross-module temporal misalignment.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="assets/images/distance-analysis.svg" alt="Distance analysis figure">
+            <figcaption>Gains persist beyond immediate adjacency, especially in sparse supervision bins.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="assets/images/missing-modality.svg" alt="Missing modality robustness figure">
+            <figcaption>Dialogue-paced temporal priors remain stable when modality availability degrades.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="outputs" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Research Outputs</p>
+          <h2>Research outputs and public-facing materials</h2>
+          <p>
+            This public repository is currently a project homepage first. It explains what exists in
+            the dissertation pipeline and what is intended for later public release.
+          </p>
+        </div>
+
+        <div class="output-grid">
+          <article class="output-card">
+            <span class="status status-thesis">Dissertation</span>
+            <h3>Thesis-level project framing</h3>
+            <p>
+              The dissertation is the main source of the end-to-end PaceVer narrative: Task I pair
+              extraction, Task II explanation objects, and the interaction between extraction and
+              verification.
+            </p>
+            <div class="output-links">
+              <a href="#overview">Read overview</a>
+              <a href="#resources">See release status</a>
+            </div>
+          </article>
+
+          <article class="output-card">
+            <span class="status status-live">Paper manuscript</span>
+            <h3>PaceExt / TRecAM results</h3>
+            <p>
+              The most mature public-facing evidence currently comes from the extractor side, where
+              ATDG + DP reports the strongest quantitative results in the current thesis manuscript.
+            </p>
+            <div class="output-links">
+              <a href="#results">See results</a>
+              <a href="#resources">Public materials pending</a>
+            </div>
+          </article>
+
+          <article class="output-card">
+            <span class="status status-build">Survey</span>
+            <h3>Bridging Protocol survey</h3>
+            <p>
+              The survey perspective motivates BridgeProt as an evaluation bridge from pair extraction
+              to grounded, auditable explanations.
+            </p>
+            <div class="output-links">
+              <a href="#modules">See module role</a>
+              <a href="#resources">Public materials pending</a>
+            </div>
+          </article>
+
+          <article class="output-card">
+            <span class="status status-thesis">Chapter draft</span>
+            <h3>ReaVer chapter notes</h3>
+            <p>
+              ReaVer captures the verification-driven reasoning layer, including bounded schema
+              outputs, independent verification, and adaptive expansion under budget.
+            </p>
+            <div class="output-links">
+              <a href="#modules">See module role</a>
+              <a href="#resources">Release status</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="resources" class="section reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Resources</p>
+          <h2>Public availability and release path</h2>
+          <p>
+            The dissertation project is evolving, but the core codebase is not yet publicly released.
+            This public repository therefore serves as the stable project homepage and release-status
+            page.
+          </p>
+        </div>
+
+        <div class="resource-layout">
+          <article class="resource-card">
+            <h3>What is public now</h3>
+            <ul>
+              <li>This GitHub Pages site and its figure assets.</li>
+              <li>A stable high-level summary of the doctoral project.</li>
+              <li>Selected quantitative results and visual evidence from the thesis narrative.</li>
+            </ul>
+          </article>
+
+          <article class="resource-card">
+            <h3>What is not public yet</h3>
+            <ul>
+              <li>The full research codebase remains in a private working repository.</li>
+              <li>Cleaned public releases of training scripts, configs, and checkpoints are still in preparation.</li>
+              <li>Some manuscripts and thesis materials are being curated before public upload.</li>
+            </ul>
+          </article>
+
+          <article class="resource-card">
+            <h3>Planned release path</h3>
+            <p>
+              The intended long-term setup is: a public project homepage, selected public paper and
+              thesis assets, and a separate cleaned code release once publication and repository
+              cleanup are ready.
+            </p>
+          </article>
+
+          <article class="resource-card citation-card">
+            <h3>Project descriptor</h3>
+            <pre><code>@misc{pacever_project,
+  title  = {PaceVer: Pace-conditioned Extraction and Reasoning with Verification},
+  author = {Yan Xia},
+  note   = {Doctoral research project website},
+  year   = {2026},
+  url    = {https://github.com/panzhzh/PaceVer-web}
+}</code></pre>
+            <p class="citation-note">
+              Replace this with the final dissertation or publication citation once the official
+              bibliographic record and public artifact links are fixed.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer reveal">
+      <div>
+        <strong>PaceVer</strong>
+        <p>
+          An evolving doctoral research project on multimodal emotion-cause extraction, bridgeable
+          explanations, and verification-driven reasoning.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/panzhzh/PaceVer-web" target="_blank" rel="noreferrer">Site repository</a>
+        <a href="https://github.com/panzhzh" target="_blank" rel="noreferrer">GitHub profile</a>
+        <a href="#resources">Release status</a>
+      </div>
+      <p class="footer-meta">Website snapshot <span id="year"></span>. Built for GitHub Pages.</p>
+    </footer>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
