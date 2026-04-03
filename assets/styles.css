@@ -675,30 +675,20 @@ th {
 }
 
 .site-footer {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: end;
-  margin-top: 1.35rem;
-  padding: 1.1rem 1.25rem;
-}
-
-.footer-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  font-weight: 700;
-}
-
-.footer-links a {
-  color: var(--accent);
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.35rem;
+  padding: 0.2rem 0 0.35rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .footer-meta {
-  grid-column: 1 / -1;
-  padding-top: 0.55rem;
-  border-top: 1px solid var(--line);
+  margin: 0;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .reveal {
@@ -778,8 +768,7 @@ th {
   .dual-grid,
   .banner-card,
   .callout-grid,
-  .hero-panel,
-  .site-footer {
+  .hero-panel {
     grid-template-columns: 1fr;
   }
 }
@@ -805,9 +794,9 @@ th {
   }
 
   .hero-actions,
-  .footer-links {
+  .site-footer {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
   }
 
   .button,
