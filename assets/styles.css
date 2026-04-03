@@ -301,7 +301,6 @@ h1,
 h2,
 h3 {
   margin: 0;
-  line-height: 1.02;
 }
 
 h1,
@@ -311,18 +310,21 @@ h2 {
 
 h1 {
   font-size: clamp(2.05rem, 4.4vw, 3.45rem);
+  line-height: 1.08;
   margin-bottom: 0.7rem;
   font-weight: 700;
 }
 
 h2 {
   font-size: clamp(1.52rem, 2.5vw, 2.05rem);
+  line-height: 1.14;
   margin-bottom: 0.75rem;
   font-weight: 700;
 }
 
 h3 {
   font-size: 1.02rem;
+  line-height: 1.28;
   margin-bottom: 0.55rem;
   font-weight: 600;
 }
@@ -353,11 +355,15 @@ h3 {
   max-width: 41rem;
 }
 
+.hero-copy > * + * {
+  margin-top: 0.95rem;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin: 1.1rem 0 1rem;
+  margin: 1.25rem 0 1.05rem;
 }
 
 .chip-row {
@@ -407,6 +413,10 @@ h3 {
   margin-bottom: 1.15rem;
 }
 
+.section-header > * + * {
+  margin-top: 0.7rem;
+}
+
 .flow-grid,
 .portal-grid,
 .card-grid,
@@ -435,7 +445,7 @@ h3 {
 }
 
 .media-grid.three-up {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .feature-card,
@@ -446,10 +456,23 @@ h3 {
   border-radius: var(--radius-lg);
 }
 
+.figure-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
 .feature-card ul,
 .feature-card ol {
   margin: 0;
   padding-left: 1.15rem;
+}
+
+.feature-card > * + *,
+.stat-card > * + *,
+.figure-panel > * + *,
+.table-head > * + * {
+  margin-top: 0.75rem;
 }
 
 .check-list li,
@@ -465,6 +488,12 @@ h3 {
 
 .portal-card h3 {
   margin-bottom: 0;
+}
+
+.feature-card > .card-kicker,
+.portal-card > .portal-label,
+.stat-card > .stat-label {
+  margin-bottom: 0.8rem;
 }
 
 .portal-link {
@@ -489,18 +518,13 @@ h3 {
   background: #fff;
 }
 
+.figure-panel img.zoomable {
+  cursor: zoom-in;
+}
+
 .figure-panel figcaption {
   margin-top: 0.8rem;
   font-size: 0.93rem;
-}
-
-.pdf-object {
-  display: block;
-  width: 100%;
-  height: 340px;
-  border: 1px solid rgba(20, 37, 61, 0.08);
-  border-radius: 16px;
-  background: #fff;
 }
 
 .text-link {
@@ -617,6 +641,11 @@ th {
   font-size: 0.88rem;
 }
 
+.asset-link {
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+}
+
 .banner-card {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
@@ -692,6 +721,62 @@ th {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(10, 20, 34, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-inner {
+  width: min(100%, 1200px);
+  max-height: 100%;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: min(84vh, 1200px);
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  background: #fff;
+}
+
+.lightbox-caption {
+  margin: 0 auto;
+  max-width: 72rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  font-size: 0.94rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
