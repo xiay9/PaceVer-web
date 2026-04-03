@@ -445,7 +445,7 @@ h3 {
 }
 
 .media-grid.three-up {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .feature-card,
@@ -454,12 +454,6 @@ h3 {
 .figure-panel {
   padding: 1.1rem;
   border-radius: var(--radius-lg);
-}
-
-.figure-stack {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
 }
 
 .feature-card ul,
@@ -638,11 +632,6 @@ th {
 
 .table-note {
   margin-top: 0.9rem;
-  font-size: 0.88rem;
-}
-
-.asset-link {
-  margin-top: 0.65rem;
   font-size: 0.88rem;
 }
 
