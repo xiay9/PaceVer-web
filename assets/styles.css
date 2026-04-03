@@ -445,6 +445,7 @@ h3 {
 .card-grid.two-up,
 .dual-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .media-grid.three-up {
@@ -455,6 +456,7 @@ h3 {
 .portal-card,
 .code-card,
 .figure-panel {
+  margin: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -533,11 +535,6 @@ h3 {
 .figure-panel.figure-panel-narrow {
   width: 100%;
   margin: 0;
-}
-
-.figure-panel.figure-panel-narrow img {
-  width: min(70%, 52rem);
-  margin: 0 auto;
 }
 
 .dual-grid > .feature-card,
@@ -845,10 +842,6 @@ th {
   .button,
   .button.primary,
   .button.secondary {
-    width: 100%;
-  }
-
-  .figure-panel.figure-panel-narrow img {
     width: 100%;
   }
 
